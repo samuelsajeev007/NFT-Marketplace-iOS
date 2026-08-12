@@ -23,6 +23,9 @@ enum AppRoute: Hashable {
 
     /// Detail view for a single NFT.
     case nftDetail(nft: NFT)
+    
+    /// The screen to create a new NFT.
+    case createNFT
 
     /// Purchase confirmation / flow for a given NFT.
     case purchaseFlow(nft: NFT)

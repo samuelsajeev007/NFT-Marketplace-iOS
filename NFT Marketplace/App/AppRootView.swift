@@ -60,6 +60,9 @@ struct AppRootView: View {
 
         case .cryptoWallet:
             PlaceholderView(title: "Crypto Wallet", systemImage: "bitcoinsign.circle")
+            
+        case .createNFT:
+            CreateNFTView()
         }
     }
 }

@@ -15,6 +15,8 @@ import Foundation
 ///
 /// To support unit testing, replace concrete types with protocol-backed mocks
 /// before constructing the container.
+@MainActor
+@Observable
 final class AppContainer {
 
     // MARK: - Router
@@ -34,6 +36,7 @@ final class AppContainer {
 
     let marketplaceViewModel: MarketplaceViewModel
     let walletViewModel: WalletViewModel
+    let createNFTViewModel: CreateNFTViewModel
 
     // MARK: - Init
 
@@ -52,5 +55,17 @@ final class AppContainer {
         // ViewModels
         self.marketplaceViewModel = MarketplaceViewModel(marketplaceRepository: self.marketplaceRepository)
         self.walletViewModel = WalletViewModel(walletRepository: self.walletRepository)
+        self.createNFTViewModel = CreateNFTViewModel(walletRepository: self.walletRepository)
+    }
+    
+    // MARK: - Factories
+    
+    @MainActor
+    func makePurchaseViewModel(for nft: NFT) -> PurchaseViewModel {
+        return PurchaseViewModel(
+            nft: nft,
+            marketplaceRepository: self.marketplaceRepository,
+            walletRepository: self.walletRepository
+        )
     }
 }

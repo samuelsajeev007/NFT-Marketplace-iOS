@@ -22,7 +22,7 @@ enum NFTEndpoint {
     case nftDetail(id: String)
 
     /// Initiates a purchase of an NFT using USDT.
-    case purchaseNFT(nftID: String)
+    case purchaseNFT(nftID: String, userId: String, email: String)
 
     // MARK: - Wallet
 
@@ -31,6 +31,17 @@ enum NFTEndpoint {
 
     /// Fetches NFTs owned by the authenticated user.
     case ownedNFTs(userid: String, email: String)
+
+    /// Uploads a new NFT to the marketplace.
+    case uploadNFT(
+        imageData: Data,
+        imageName: String,
+        title: String,
+        description: String,
+        price: String,
+        userid: String,
+        email: String
+    )
 
     // MARK: - Path Resolution
 
@@ -41,12 +52,14 @@ enum NFTEndpoint {
             return "/beetobeeGetProducts"
         case .nftDetail(let id):
             return "/nfts/\(id)"
-        case .purchaseNFT(let nftID):
-            return "/nfts/\(nftID)/purchase"
+        case .purchaseNFT:
+            return "/beetobeeBuyNft"
         case .walletBalances:
             return "/beetobeeMywalletBalance"
         case .ownedNFTs:
             return "/beetobeeMyNfts"
+        case .uploadNFT:
+            return "/beetobeeNftUpload"
         }
     }
 
@@ -55,7 +68,7 @@ enum NFTEndpoint {
         switch self {
         case .listNFTs, .nftDetail, .walletBalances, .ownedNFTs:
             return "GET"
-        case .purchaseNFT:
+        case .purchaseNFT, .uploadNFT:
             return "POST"
         }
     }

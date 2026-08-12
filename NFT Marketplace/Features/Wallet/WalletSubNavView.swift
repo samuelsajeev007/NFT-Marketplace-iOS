@@ -13,6 +13,7 @@ enum WalletTab: String, CaseIterable {
 }
 
 struct WalletSubNavView: View {
+    @Environment(AppRouter.self) private var router
     @Binding var selectedTab: WalletTab
     
     var body: some View {
@@ -50,7 +51,7 @@ struct WalletSubNavView: View {
             if selectedTab == .myNFTs {
                 // Create NFT Button
                 Button {
-                    // Action to create NFT
+                    router.navigate(to: .createNFT)
                 } label: {
                     Text("Create NFT")
                         .font(.system(size: 14, weight: .medium))

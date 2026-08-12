@@ -71,23 +71,7 @@ final class MarketplaceViewModel {
         await fetchNextPage()
     }
 
-    /// Called when the user confirms a purchase.
-    func purchase(nft: NFT) async {
-        guard !isPurchasing else { return }
-        isPurchasing = true
-        errorMessage = nil
 
-        do {
-            let updatedNFT = try await marketplaceRepository.purchaseNFT(id: nft.id)
-            if let index = nfts.firstIndex(where: { $0.id == updatedNFT.id }) {
-                nfts[index] = updatedNFT
-            }
-        } catch {
-            errorMessage = error.localizedDescription
-        }
-
-        isPurchasing = false
-    }
 
     // MARK: - Private Helpers
 

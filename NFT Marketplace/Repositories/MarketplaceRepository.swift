@@ -22,8 +22,7 @@ protocol MarketplaceRepositoryProtocol {
     func fetchNFTDetail(id: String) async throws -> NFT
 
     /// Initiates the purchase of an NFT using USDT.
-    /// Returns the updated NFT model reflecting the sold state.
-    func purchaseNFT(id: String) async throws -> NFT
+    func purchaseNFT(id: String, userId: String, email: String) async throws
 }
 
 // MARK: - MarketplaceRepository
@@ -61,10 +60,10 @@ final class MarketplaceRepository: MarketplaceRepositoryProtocol {
         )
     }
 
-    func purchaseNFT(id: String) async throws -> NFT {
-        try await networkService.request(
-            endpoint: .purchaseNFT(nftID: id),
-            responseType: NFT.self
+    func purchaseNFT(id: String, userId: String, email: String) async throws {
+        _ = try await networkService.request(
+            endpoint: .purchaseNFT(nftID: id, userId: userId, email: email),
+            responseType: EmptyResponse.self
         )
     }
 }

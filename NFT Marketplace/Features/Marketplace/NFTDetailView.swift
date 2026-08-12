@@ -10,6 +10,9 @@ import SwiftUI
 struct NFTDetailView: View {
     let nft: NFT
     @Environment(AppRouter.self) private var router
+    @Environment(AppContainer.self) private var container
+    
+    @State private var showPurchaseModal = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -139,8 +142,9 @@ struct NFTDetailView: View {
                     Spacer()
                     
                     Button {
-                        // Action handled by router in real flow
-                        router.navigate(to: .purchaseFlow(nft: nft))
+                        withAnimation {
+                            showPurchaseModal = true
+                        }
                     } label: {
                         HStack(spacing: 8) {
                             Text("Buy NFT")
@@ -167,7 +171,17 @@ struct NFTDetailView: View {
             }
         }
         .background(Color.white)
-        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden()
+        .overlay {
+            if showPurchaseModal {
+                PurchaseConfirmationView {
+                    withAnimation {
+                        showPurchaseModal = false
+                    }
+                }
+                .environment(container.makePurchaseViewModel(for: nft))
+            }
+        }
     }
 }
 
