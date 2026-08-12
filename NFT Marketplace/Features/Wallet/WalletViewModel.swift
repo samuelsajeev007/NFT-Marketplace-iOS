@@ -65,7 +65,7 @@ final class WalletViewModel {
 
         do {
             // Fetch both data sets concurrently for better performance.
-            async let fetchedNFTs = walletRepository.fetchOwnedNFTs()
+            async let fetchedNFTs = walletRepository.fetchOwnedNFTs(userId: "user-001", email: "jane.cooper@example.com")
             async let fetchedBalances = walletRepository.fetchBalances()
 
             ownedNFTs = try await fetchedNFTs

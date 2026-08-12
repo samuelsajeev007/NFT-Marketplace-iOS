@@ -91,7 +91,15 @@ final class NetworkService: NetworkServiceProtocol {
         endpoint: NFTEndpoint,
         responseType: T.Type
     ) async throws -> T {
-        guard let url = URL(string: baseURL + endpoint.path) else {
+        guard var components = URLComponents(string: baseURL + endpoint.path) else {
+            throw NetworkError.invalidURL
+        }
+
+        if let queryItems = endpoint.queryItems {
+            components.queryItems = queryItems
+        }
+
+        guard let url = components.url else {
             throw NetworkError.invalidURL
         }
 

@@ -15,8 +15,9 @@ protocol WalletRepositoryProtocol {
     /// Fetches the user's cryptocurrency balances, including USDT.
     func fetchBalances() async throws -> [WalletBalance]
 
-    /// Fetches NFTs that the authenticated user has purchased.
-    func fetchOwnedNFTs() async throws -> [NFT]
+    /// Fetches the NFTs owned by the user.
+    func fetchOwnedNFTs(userId: String, email: String) async throws -> [NFT]
+
 }
 
 // MARK: - WalletRepository
@@ -37,16 +38,19 @@ final class WalletRepository: WalletRepositoryProtocol {
     // MARK: - WalletRepositoryProtocol
 
     func fetchBalances() async throws -> [WalletBalance] {
-        try await networkService.request(
+        let response = try await networkService.request(
             endpoint: .walletBalances,
             responseType: [WalletBalance].self
         )
+        return response
     }
 
-    func fetchOwnedNFTs() async throws -> [NFT] {
-        try await networkService.request(
-            endpoint: .ownedNFTs,
-            responseType: [NFT].self
+    func fetchOwnedNFTs(userId: String, email: String) async throws -> [NFT] {
+        let response = try await networkService.request(
+            endpoint: .ownedNFTs(userid: userId, email: email),
+            responseType: NFTResponse.self
         )
+        return response.items
     }
+
 }

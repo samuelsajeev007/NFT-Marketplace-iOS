@@ -24,6 +24,7 @@ struct NFTMarketplaceApp: App {
                 // not `.environmentObject(_:)`.
                 .environment(container.appRouter)
                 .environment(container.marketplaceViewModel)
+                .environment(container.walletViewModel)
         }
     }
 }

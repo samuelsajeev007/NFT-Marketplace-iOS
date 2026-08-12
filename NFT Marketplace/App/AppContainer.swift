@@ -33,6 +33,7 @@ final class AppContainer {
     // MARK: - ViewModels
 
     let marketplaceViewModel: MarketplaceViewModel
+    let walletViewModel: WalletViewModel
 
     // MARK: - Init
 
@@ -50,5 +51,6 @@ final class AppContainer {
 
         // ViewModels
         self.marketplaceViewModel = MarketplaceViewModel(marketplaceRepository: self.marketplaceRepository)
+        self.walletViewModel = WalletViewModel(walletRepository: self.walletRepository)
     }
 }

@@ -25,13 +25,8 @@ struct HomeScreen: View {
                 MarketplaceView()
                     .tag(HomeTab.marketplace)
                 
-                // Placeholder for My Wallets tab content
-                VStack {
-                    Text("My Wallets Content")
-                        .foregroundStyle(.gray)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .tag(HomeTab.myWallets)
+                WalletView()
+                    .tag(HomeTab.myWallets)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .background(Color.techbankBackground)

@@ -19,7 +19,7 @@ struct MarketplaceView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 24) {
                 ForEach(viewModel.nfts) { nft in
-                    NavigationLink(value: AppRoute.nftDetail(nftID: nft.id)) {
+                    NavigationLink(value: AppRoute.nftDetail(nft: nft)) {
                         NFTCardView(nft: nft)
                     }
                     .buttonStyle(.plain)

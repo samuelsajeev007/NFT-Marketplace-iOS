@@ -13,4 +13,6 @@ extension Color {
     static let profileCardGradientEnd = Color(red: 0.92, green: 0.83, blue: 1.0)
     static let techbankBlue = Color(red: 0.22, green: 0.56, blue: 0.96)
     static let techbankBackground = Color(red: 0.98, green: 0.98, blue: 0.99)
+    static let buyButtonGradientStart = Color(red: 0.20, green: 0.50, blue: 1.0)
+    static let buyButtonGradientEnd = Color(red: 0.10, green: 0.70, blue: 1.0)
 }

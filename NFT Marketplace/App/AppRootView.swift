@@ -46,11 +46,11 @@ struct AppRootView: View {
         case .marketplace:
             PlaceholderView(title: "Marketplace", systemImage: "storefront")
 
-        case .nftDetail(let nftID):
-            PlaceholderView(title: "NFT Detail – \(nftID)", systemImage: "photo.artframe")
+        case .nftDetail(let nft):
+            NFTDetailView(nft: nft)
 
-        case .purchaseFlow(let nftID):
-            PlaceholderView(title: "Purchase – \(nftID)", systemImage: "creditcard")
+        case .purchaseFlow(let nft):
+            PlaceholderView(title: "Purchase – \(nft.id)", systemImage: "creditcard")
 
         case .wallet:
             PlaceholderView(title: "My Wallet", systemImage: "wallet.pass")

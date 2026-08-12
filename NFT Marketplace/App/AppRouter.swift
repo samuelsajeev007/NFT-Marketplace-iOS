@@ -22,10 +22,10 @@ enum AppRoute: Hashable {
     case marketplace
 
     /// Detail view for a single NFT.
-    case nftDetail(nftID: String)
+    case nftDetail(nft: NFT)
 
     /// Purchase confirmation / flow for a given NFT.
-    case purchaseFlow(nftID: String)
+    case purchaseFlow(nft: NFT)
 
     // MARK: Wallet
 
