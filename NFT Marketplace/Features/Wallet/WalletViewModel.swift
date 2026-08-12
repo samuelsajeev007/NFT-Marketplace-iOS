@@ -41,7 +41,7 @@ final class WalletViewModel {
 
     /// Convenience accessor for the USDT balance, if available.
     var usdtBalance: WalletBalance? {
-        balances.first { $0.currencySymbol == AppConstants.Currency.purchaseCurrencySymbol }
+        balances.first { $0.symbol == AppConstants.Currency.purchaseCurrencySymbol }
     }
 
     // MARK: - Dependencies
@@ -66,7 +66,7 @@ final class WalletViewModel {
         do {
             // Fetch both data sets concurrently for better performance.
             async let fetchedNFTs = walletRepository.fetchOwnedNFTs(userId: "user-001", email: "jane.cooper@example.com")
-            async let fetchedBalances = walletRepository.fetchBalances()
+            async let fetchedBalances = walletRepository.fetchBalances(userId: "user-001", email: "jane.cooper@example.com")
 
             ownedNFTs = try await fetchedNFTs
             balances = try await fetchedBalances

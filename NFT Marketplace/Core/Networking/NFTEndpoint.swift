@@ -27,7 +27,7 @@ enum NFTEndpoint {
     // MARK: - Wallet
 
     /// Fetches cryptocurrency balances for the authenticated user.
-    case walletBalances
+    case walletBalances(userid: String, email: String)
 
     /// Fetches NFTs owned by the authenticated user.
     case ownedNFTs(userid: String, email: String)
@@ -44,7 +44,7 @@ enum NFTEndpoint {
         case .purchaseNFT(let nftID):
             return "/nfts/\(nftID)/purchase"
         case .walletBalances:
-            return "/wallet/balances"
+            return "/beetobeeMywalletBalance"
         case .ownedNFTs:
             return "/beetobeeMyNfts"
         }
@@ -63,7 +63,7 @@ enum NFTEndpoint {
     /// URL query parameters for each endpoint.
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .ownedNFTs(let userid, let email):
+        case .ownedNFTs(let userid, let email), .walletBalances(let userid, let email):
             return [
                 URLQueryItem(name: "userid", value: userid),
                 URLQueryItem(name: "email", value: email)

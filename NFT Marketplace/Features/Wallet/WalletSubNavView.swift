@@ -47,21 +47,23 @@ struct WalletSubNavView: View {
             
             Spacer()
             
-            // Create NFT Button
-            Button {
-                // Action to create NFT
-            } label: {
-                Text("Create NFT")
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundStyle(Color.techbankBlue)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 8)
-                    .overlay(
-                        Capsule()
-                            .stroke(Color.techbankBlue, lineWidth: 1)
-                    )
+            if selectedTab == .myNFTs {
+                // Create NFT Button
+                Button {
+                    // Action to create NFT
+                } label: {
+                    Text("Create NFT")
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundStyle(Color.techbankBlue)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 8)
+                        .overlay(
+                            Capsule()
+                                .stroke(Color.techbankBlue, lineWidth: 1)
+                        )
+                }
+                .buttonStyle(.plain)
             }
-            .buttonStyle(.plain)
         }
         .padding(.horizontal)
         .padding(.top, 16)

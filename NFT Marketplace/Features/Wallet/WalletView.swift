@@ -43,12 +43,23 @@ struct WalletView: View {
                     await viewModel.loadWalletData()
                 }
             } else {
-                // Placeholder for Coins tab
-                VStack {
-                    Spacer()
-                    Text("Coins Content")
-                        .foregroundStyle(.gray)
-                    Spacer()
+                ScrollView {
+                    VStack(spacing: 12) {
+                        ForEach(viewModel.balances) { balance in
+                            CoinCardView(balance: balance)
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, 16)
+                    .padding(.bottom, 24)
+                    
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .padding()
+                    }
+                }
+                .refreshable {
+                    await viewModel.loadWalletData()
                 }
             }
         }
