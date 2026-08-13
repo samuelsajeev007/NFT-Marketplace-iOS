@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreText
 
 @main
 struct NFTMarketplaceApp: App {
@@ -14,6 +15,24 @@ struct NFTMarketplaceApp: App {
 
     /// The central dependency container, created once for the lifetime of the app.
     private let container: AppContainer = AppContainer()
+
+    // MARK: - Init
+    
+    init() {
+        registerCustomFonts()
+    }
+
+    private func registerCustomFonts() {
+        guard let fontURLs = Bundle.main.urls(forResourcesWithExtension: "ttf", subdirectory: "Fonts") else {
+            return
+        }
+        for url in fontURLs {
+            var error: Unmanaged<CFError>?
+            if CTFontManagerRegisterFontsForURL(url as CFURL, .process, &error) == false {
+                print("Failed to register font: \(String(describing: error?.takeUnretainedValue()))")
+            }
+        }
+    }
 
     // MARK: - Scene
 

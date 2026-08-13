@@ -24,7 +24,7 @@ struct PlaceholderView: View {
     var body: some View {
         VStack(spacing: 16) {
             Image(systemName: systemImage)
-                .font(.system(size: 48))
+                .font(.custom("Poppins-Regular", size: 48))
                 .foregroundStyle(.secondary)
 
             Text(title)

@@ -31,7 +31,7 @@ struct SuccessModalView: View {
                         .frame(width: 80, height: 80)
                     
                     Image(systemName: "checkmark")
-                        .font(.system(size: 40, weight: .semibold))
+                        .font(.custom("Poppins-SemiBold", size: 40))
                         .foregroundStyle(.white)
                 }
                 .padding(.top, 24)
@@ -39,11 +39,11 @@ struct SuccessModalView: View {
                 // Text content
                 VStack(spacing: 8) {
                     Text(title)
-                        .font(.system(size: 20, weight: .semibold))
+                        .font(.custom("Poppins-SemiBold", size: 20))
                         .foregroundStyle(.black)
                     
                     Text(message)
-                        .font(.system(size: 14))
+                        .font(.custom("Poppins-Regular", size: 14))
                         .foregroundStyle(.gray)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 16)
@@ -55,9 +55,9 @@ struct SuccessModalView: View {
                 } label: {
                     HStack {
                         Text("View NFT")
-                            .font(.system(size: 16, weight: .semibold))
+                            .font(.custom("Poppins-SemiBold", size: 16))
                         Image(systemName: "arrow.right")
-                            .font(.system(size: 16, weight: .semibold))
+                            .font(.custom("Poppins-SemiBold", size: 16))
                     }
                     .foregroundStyle(.white)
                     .frame(width: 200, height: 50)

@@ -56,12 +56,16 @@ struct NFTCardView: View {
             // Details
             VStack(alignment: .leading, spacing: 4) {
                 Text(nft.title)
-                    .font(.system(size: 14, weight: .medium))
+                    .font(.custom("Poppins-Medium", size: 13.02))
+                    .kerning(0.93)
+                    .frame(height: 20)
                     .foregroundStyle(.black)
                     .lineLimit(1)
                 
                 Text("\(nft.price.formattedAsUSDT)")
-                    .font(.system(size: 14, weight: .semibold))
+                    .font(.custom("Poppins-SemiBold", size: 14))
+                    .kerning(0.93)
+                    .frame(height: 21)
                     .foregroundStyle(Color.techbankBlue)
             }
             .padding(.horizontal, 4)

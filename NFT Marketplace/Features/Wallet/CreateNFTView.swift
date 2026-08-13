@@ -25,7 +25,7 @@ struct CreateNFTView: View {
                         router.navigateBack()
                     } label: {
                         Image(systemName: "chevron.left")
-                            .font(.system(size: 20, weight: .medium))
+                            .font(.custom("Poppins-Medium", size: 20))
                             .foregroundStyle(.black)
                     }
                     .frame(width: 44, height: 44)
@@ -33,7 +33,7 @@ struct CreateNFTView: View {
                     Spacer()
                     
                     Text("Create NFT")
-                        .font(.system(size: 20, weight: .semibold))
+                        .font(.custom("Poppins-SemiBold", size: 20))
                         .foregroundStyle(.black)
                         .padding(.trailing, 44) // Balance the back button
                     
@@ -57,13 +57,13 @@ struct CreateNFTView: View {
                             } else {
                                 VStack(spacing: 8) {
                                     Image(systemName: "square.and.arrow.up")
-                                        .font(.system(size: 40))
+                                        .font(.custom("Poppins-Regular", size: 40))
                                         .foregroundStyle(.gray)
                                     Text("Upload NFT")
-                                        .font(.system(size: 16, weight: .medium))
+                                        .font(.custom("Poppins-Medium", size: 16))
                                         .foregroundStyle(.black)
                                     Text("( Type : png, jpeg )")
-                                        .font(.system(size: 12))
+                                        .font(.custom("Poppins-Regular", size: 12))
                                         .foregroundStyle(.gray)
                                 }
                                 .frame(height: 200)
@@ -84,7 +84,7 @@ struct CreateNFTView: View {
                         // Title
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Title *")
-                                .font(.system(size: 14, weight: .medium))
+                                .font(.custom("Poppins-Medium", size: 14))
                                 .foregroundStyle(.black)
                             
                             TextField("Enter the Nft name", text: $viewModel.title)
@@ -100,7 +100,7 @@ struct CreateNFTView: View {
                         // Description
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Description")
-                                .font(.system(size: 14, weight: .medium))
+                                .font(.custom("Poppins-Medium", size: 14))
                                 .foregroundStyle(.black)
                             
                             TextEditor(text: $viewModel.description)
@@ -117,7 +117,7 @@ struct CreateNFTView: View {
                         // Selling Price
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Set Selling Price *")
-                                .font(.system(size: 14, weight: .medium))
+                                .font(.custom("Poppins-Medium", size: 14))
                                 .foregroundStyle(.black)
                             
                             HStack {
@@ -125,7 +125,7 @@ struct CreateNFTView: View {
                                     .keyboardType(.decimalPad)
                                 
                                 Text("USDT")
-                                    .font(.system(size: 14, weight: .medium))
+                                    .font(.custom("Poppins-Medium", size: 14))
                                     .foregroundStyle(.black)
                             }
                             .padding()
@@ -149,9 +149,9 @@ struct CreateNFTView: View {
                                         .tint(.white)
                                 } else {
                                     Text("Create NFT")
-                                        .font(.system(size: 16, weight: .semibold))
+                                        .font(.custom("Poppins-SemiBold", size: 16))
                                     Image(systemName: "arrow.right")
-                                        .font(.system(size: 16, weight: .semibold))
+                                        .font(.custom("Poppins-SemiBold", size: 16))
                                 }
                             }
                             .foregroundStyle(.white)

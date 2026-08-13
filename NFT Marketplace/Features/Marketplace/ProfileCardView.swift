@@ -11,36 +11,57 @@ struct ProfileCardView: View {
     let userName: String
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 24) {
+        VStack(alignment: .leading, spacing: 16) {
             Image(systemName: "person")
-                .font(.system(size: 16))
+                .font(.custom("Poppins-Medium", size: 14))
                 .foregroundStyle(.black)
-                .frame(width: 36, height: 36)
-                .background(Color.white.opacity(0.8))
+                .frame(width: 28, height: 28)
+                .background(Color.white)
                 .clipShape(Circle())
             
             Text(userName)
-                .font(.system(size: 24, weight: .medium))
-                .foregroundStyle(.black)
+                .font(.custom("Poppins-Medium", size: 24))
+                .frame(width: 156, height: 36, alignment: .leading)
+                .minimumScaleFactor(0.5)
+                .foregroundStyle(Color(red: 17/255.0, green: 20/255.0, blue: 28/255.0))
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(24)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .padding(.top, 42)
+        .padding(.leading, 20)
+        .frame(height: 155)
         .background {
             LinearGradient(
-                colors: [.profileCardGradientStart, .profileCardGradientEnd],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
+                colors: [
+                    Color(red: 75/255.0, green: 90/255.0, blue: 252/255.0),
+                    Color(red: 156/255.0, green: 66/255.0, blue: 254/255.0)
+                ],
+                startPoint: .leading,
+                endPoint: .trailing
             )
-            // Adding a subtle grid overlay to mimic the screenshot
+            .opacity(0.28)
             .overlay {
-                Image(systemName: "square.grid.3x3.fill")
-                    .resizable(resizingMode: .tile)
-                    .foregroundStyle(.white.opacity(0.1))
-                    .scaleEffect(3.0)
+                Canvas { context, size in
+                    let step: CGFloat = 8
+                    let dotSize: CGFloat = 2
+                    
+                    for x in stride(from: 0, through: size.width, by: step) {
+                        for y in stride(from: 0, through: size.height, by: step) {
+                            let rect = CGRect(x: x, y: y, width: dotSize, height: dotSize)
+                            context.fill(Path(rect), with: .color(.white.opacity(0.4)))
+                        }
+                    }
+                }
+                .mask {
+                    LinearGradient(
+                        colors: [.white, .white.opacity(0.3)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                }
             }
         }
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-        .padding(.horizontal)
+        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .padding(.horizontal, 16)
     }
 }
 

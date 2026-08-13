@@ -27,10 +27,9 @@ struct WalletSubNavView: View {
                         }
                     } label: {
                         Text(tab.rawValue)
-                            .font(.system(size: 14, weight: .medium))
+                            .font(.custom("Poppins-Medium", size: 14))
                             .foregroundStyle(selectedTab == tab ? .white : .black)
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 8)
+                            .frame(width: 90, height: 31)
                             .background {
                                 if selectedTab == tab {
                                     Color.techbankBlue
@@ -43,7 +42,8 @@ struct WalletSubNavView: View {
                     .buttonStyle(.plain)
                 }
             }
-            .background(Color.gray.opacity(0.15))
+            .frame(width: 184, height: 35)
+            .background(Color(red: 237/255.0, green: 237/255.0, blue: 237/255.0))
             .clipShape(Capsule())
             
             Spacer()
@@ -54,7 +54,7 @@ struct WalletSubNavView: View {
                     router.navigate(to: .createNFT)
                 } label: {
                     Text("Create NFT")
-                        .font(.system(size: 14, weight: .medium))
+                        .font(.custom("Poppins-Medium", size: 14))
                         .foregroundStyle(Color.techbankBlue)
                         .padding(.horizontal, 16)
                         .padding(.vertical, 8)

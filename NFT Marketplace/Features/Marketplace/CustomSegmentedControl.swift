@@ -26,22 +26,26 @@ struct CustomSegmentedControl: View {
                 } label: {
                     VStack(spacing: 12) {
                         Text(tab.rawValue)
-                            .font(.system(size: 16, weight: selectedTab == tab ? .medium : .regular))
-                            .foregroundStyle(selectedTab == tab ? .black : .gray)
+                            .font(.custom(selectedTab == tab ? "Poppins-Medium" : "Poppins", size: 16))
+                            .foregroundStyle(.black)
+//                            .frame(width: tab == .marketplace ? 94 : 79, height: 18)
+                            .lineLimit(1)
+                            .fixedSize(horizontal: true, vertical: false)
                         
                         ZStack {
                             Rectangle()
                                 .fill(Color.clear)
-                                .frame(height: 2)
+                                .frame(height: 3)
                             
                             if selectedTab == tab {
                                 Rectangle()
-                                    .fill(Color.techbankBlue)
-                                    .frame(height: 2)
+                                    .fill(Color(red: 51/255.0, green: 137/255.0, blue: 251/255.0))
+                                    .frame(width: 174, height: 3)
                                     .matchedGeometryEffect(id: "TAB", in: animation)
                             }
                         }
                     }
+                    .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.plain)
             }

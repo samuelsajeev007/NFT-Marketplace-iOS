@@ -22,7 +22,7 @@ struct NFTDetailView: View {
                     router.navigateBack()
                 } label: {
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 16, weight: .medium))
+                        .font(.custom("Poppins-Medium", size: 16))
                         .foregroundStyle(.black)
                         .frame(width: 44, height: 44)
                         .background(Color.yellow.opacity(0.1)) // A slight yellow tint like in the screenshot
@@ -32,7 +32,7 @@ struct NFTDetailView: View {
                 Spacer()
                 
                 Text("NFT Details")
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.custom("Poppins-SemiBold", size: 18))
                     .foregroundStyle(.black)
                 
                 Spacer()
@@ -41,7 +41,7 @@ struct NFTDetailView: View {
                     // Share action placeholder
                 } label: {
                     Image(systemName: "square.and.arrow.up")
-                        .font(.system(size: 18, weight: .medium))
+                        .font(.custom("Poppins-Medium", size: 18))
                         .foregroundStyle(.black)
                         .frame(width: 44, height: 44)
                 }
@@ -87,19 +87,19 @@ struct NFTDetailView: View {
                     // MARK: - Title and Creator
                     VStack(alignment: .leading, spacing: 12) {
                         Text(nft.title)
-                            .font(.system(size: 24, weight: .semibold))
+                            .font(.custom("Poppins-SemiBold", size: 24))
                             .foregroundStyle(.black)
                         
                         HStack(spacing: 8) {
                             Image(systemName: "person")
-                                .font(.system(size: 14))
+                                .font(.custom("Poppins-Regular", size: 14))
                                 .foregroundStyle(.gray)
                             
                             // Given the API only returns the owner ID and the screenshot uses "Theresa Webb",
                             // we fall back to a placeholder name if we can't resolve the ID.
                             // In a real app, we would look up the user profile.
                             Text(nft.createdBy == "691461156dc97f9ce2987297" ? "Theresa Webb" : nft.createdBy)
-                                .font(.system(size: 16))
+                                .font(.custom("Poppins-Regular", size: 16))
                                 .foregroundStyle(.gray)
                         }
                     }
@@ -110,11 +110,11 @@ struct NFTDetailView: View {
                     // MARK: - Description
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Description")
-                            .font(.system(size: 16, weight: .medium))
+                            .font(.custom("Poppins-Medium", size: 16))
                             .foregroundStyle(.black)
                         
                         Text(nft.description ?? "No description available.")
-                            .font(.system(size: 15))
+                            .font(.custom("Poppins-Regular", size: 15))
                             .foregroundStyle(.gray)
                             .lineSpacing(4)
                     }
@@ -131,11 +131,11 @@ struct NFTDetailView: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Price")
-                            .font(.system(size: 14))
+                            .font(.custom("Poppins-Regular", size: 14))
                             .foregroundStyle(.gray)
                         
                         Text("\(nft.price.formattedAsUSDT)")
-                            .font(.system(size: 20, weight: .bold))
+                            .font(.custom("Poppins-SemiBold", size: 20))
                             .foregroundStyle(.black)
                     }
                     
@@ -148,9 +148,9 @@ struct NFTDetailView: View {
                     } label: {
                         HStack(spacing: 8) {
                             Text("Buy NFT")
-                                .font(.system(size: 16, weight: .semibold))
+                                .font(.custom("Poppins-SemiBold", size: 16))
                             Image(systemName: "arrow.right")
-                                .font(.system(size: 16, weight: .semibold))
+                                .font(.custom("Poppins-SemiBold", size: 16))
                         }
                         .foregroundStyle(.white)
                         .padding(.horizontal, 24)

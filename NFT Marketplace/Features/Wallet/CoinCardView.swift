@@ -10,21 +10,7 @@ import SwiftUI
 struct CoinCardView: View {
     let balance: WalletBalance
     
-    // Helper to get correct styling for the coin icon based on the symbol
-    private var iconConfig: (name: String, color: Color) {
-        switch balance.symbol {
-        case "BNB":
-            return ("bitcoinsign.circle.fill", .yellow)
-        case "ETH":
-            return ("e.circle.fill", .blue)
-        case "BTC":
-            return ("bitcoinsign.circle.fill", .orange)
-        case "USDT":
-            return ("t.circle.fill", .green)
-        default:
-            return ("dollarsign.circle.fill", .gray)
-        }
-    }
+
     
     // Mock fiat value to match UI placeholder
     private var mockFiatValue: String {
@@ -47,15 +33,17 @@ struct CoinCardView: View {
     var body: some View {
         HStack(spacing: 16) {
             // Coin Icon
-            Image(systemName: iconConfig.name)
+            Image(balance.symbol)
                 .resizable()
+                .scaledToFit()
+                .scaleEffect(balance.symbol == "BTC" ? 1.35 : 1.0)
                 .frame(width: 40, height: 40)
-                .foregroundStyle(iconConfig.color, .white)
                 .background(Circle().fill(Color.white))
+                .clipShape(Circle())
             
             // Coin Symbol
             Text(balance.symbol)
-                .font(.system(size: 16, weight: .medium))
+                .font(.custom("Poppins-Medium", size: 16))
                 .foregroundStyle(.black)
             
             Spacer()
@@ -63,21 +51,21 @@ struct CoinCardView: View {
             // Balances
             VStack(alignment: .trailing, spacing: 4) {
                 Text("\(formattedBalance) \(balance.symbol)")
-                    .font(.system(size: 14, weight: .semibold))
+                    .font(.custom("Poppins-Medium", size: 13.1))
                     .foregroundStyle(.black)
                 
                 Text(mockFiatValue)
-                    .font(.system(size: 12))
+                    .font(.custom("Poppins-Medium", size: 10.3))
                     .foregroundStyle(.gray)
             }
             
             // Chevron
             Image(systemName: "chevron.right")
-                .font(.system(size: 14, weight: .medium))
+                .font(.custom("Poppins-Medium", size: 14))
                 .foregroundStyle(Color.techbankBlue)
         }
         .padding(16)
-        .background(Color.techbankBackground)
+        .background(Color(red: 236/255.0, green: 245/255.0, blue: 255/255.0))
         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
     }
 }

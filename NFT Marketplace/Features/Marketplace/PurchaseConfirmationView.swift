@@ -31,7 +31,7 @@ struct PurchaseConfirmationView: View {
                 HStack {
                     Spacer()
                     Text("Confirm Your Purchase")
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.custom("Poppins-SemiBold", size: 18))
                         .foregroundStyle(.black)
                     Spacer()
                     
@@ -41,7 +41,7 @@ struct PurchaseConfirmationView: View {
                         }
                     } label: {
                         Image(systemName: "xmark")
-                            .font(.system(size: 16, weight: .semibold))
+                            .font(.custom("Poppins-SemiBold", size: 16))
                             .foregroundStyle(.black)
                     }
                     .padding(.trailing, 16)
@@ -81,16 +81,16 @@ struct PurchaseConfirmationView: View {
                     
                     VStack(alignment: .leading, spacing: 4) {
                         Text(viewModel.nft.title)
-                            .font(.system(size: 16, weight: .semibold))
+                            .font(.custom("Poppins-SemiBold", size: 16))
                             .foregroundStyle(.black)
                         
                         HStack(spacing: 4) {
                             Image(systemName: "person")
-                                .font(.system(size: 12))
+                                .font(.custom("Poppins-Regular", size: 12))
                                 .foregroundStyle(.gray)
                             // API doesn't return creator name string natively, so we mock it if it's an ID
                             Text("Theresa Webb")
-                                .font(.system(size: 14))
+                                .font(.custom("Poppins-Regular", size: 14))
                                 .foregroundStyle(.gray)
                         }
                     }
@@ -108,11 +108,11 @@ struct PurchaseConfirmationView: View {
                 // Buying Price
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Buying Price")
-                        .font(.system(size: 14))
+                        .font(.custom("Poppins-Regular", size: 14))
                         .foregroundStyle(.gray)
                     
                     Text("\(String(format: "%.2f", NSDecimalNumber(decimal: viewModel.nft.price).doubleValue)) \(viewModel.nft.currency ?? "USDT")")
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.custom("Poppins-SemiBold", size: 18))
                         .foregroundStyle(.black)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -128,11 +128,11 @@ struct PurchaseConfirmationView: View {
                 // Wallet Balance
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Wallet Balance")
-                        .font(.system(size: 14))
+                        .font(.custom("Poppins-Regular", size: 14))
                         .foregroundStyle(.gray)
                     
                     Text("\(String(format: "%.2f", NSDecimalNumber(decimal: viewModel.usdtBalance).doubleValue)) USDT")
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.custom("Poppins-SemiBold", size: 18))
                         .foregroundStyle(viewModel.hasSufficientBalance ? .black : .red)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -157,9 +157,9 @@ struct PurchaseConfirmationView: View {
                                 .tint(.white)
                         } else {
                             Text("Buy NFT")
-                                .font(.system(size: 16, weight: .semibold))
+                                .font(.custom("Poppins-SemiBold", size: 16))
                             Image(systemName: "arrow.right")
-                                .font(.system(size: 16, weight: .semibold))
+                                .font(.custom("Poppins-SemiBold", size: 16))
                         }
                     }
                     .foregroundStyle(.white)
@@ -179,7 +179,7 @@ struct PurchaseConfirmationView: View {
                 
                 if let error = viewModel.errorMessage {
                     Text(error)
-                        .font(.system(size: 12))
+                        .font(.custom("Poppins-Regular", size: 12))
                         .foregroundStyle(.red)
                         .padding(.bottom, 16)
                 }
