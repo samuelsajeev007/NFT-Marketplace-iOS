@@ -76,7 +76,16 @@ struct CreateNFTView: View {
                         .onChange(of: viewModel.selectedItem) { _, newItem in
                             Task {
                                 if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                                    viewModel.selectedImageData = data
+                                    if let uiImage = UIImage(data: data) {
+                                        let resizedImage = uiImage.resized(toMaxDimension: 1024)
+                                        if let jpegData = resizedImage.jpegData(compressionQuality: 0.7) {
+                                            viewModel.selectedImageData = jpegData
+                                        } else {
+                                            viewModel.selectedImageData = data
+                                        }
+                                    } else {
+                                        viewModel.selectedImageData = data
+                                    }
                                 }
                             }
                         }
@@ -200,5 +209,24 @@ struct CreateNFTView: View {
             }
         }
         .navigationBarBackButtonHidden()
+    }
+}
+
+// MARK: - UIImage Resizing Extension
+fileprivate extension UIImage {
+    func resized(toMaxDimension maxDimension: CGFloat) -> UIImage {
+        let size = self.size
+        let widthRatio = maxDimension / size.width
+        let heightRatio = maxDimension / size.height
+        let scale = min(1.0, min(widthRatio, heightRatio))
+        
+        let newSize = CGSize(width: size.width * scale, height: size.height * scale)
+        let format = UIGraphicsImageRendererFormat.default()
+        format.scale = 1.0
+        let renderer = UIGraphicsImageRenderer(size: newSize, format: format)
+        
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: newSize))
+        }
     }
 }

@@ -186,18 +186,22 @@ struct PurchaseConfirmationView: View {
             }
             .background(Color.white)
             .clipShape(RoundedCorner(radius: 24, corners: [.topLeft, .topRight]))
+            .ignoresSafeArea(edges: .bottom)
             .transition(.move(edge: .bottom))
             
             if viewModel.showSuccessModal {
                 SuccessModalView(
                     title: "Purchase Successful!",
-                    message: "View it anytime in My NFTs."
+                    message: "View it anytime in My NFTs.",
+                    buttonTitle: "Close",
+                    showArrow: false
                 ) {
                     viewModel.dismissModal()
                     onDismiss()
                 }
             }
         }
+        .ignoresSafeArea()
         .onAppear {
             Task {
                 await viewModel.fetchBalance()
