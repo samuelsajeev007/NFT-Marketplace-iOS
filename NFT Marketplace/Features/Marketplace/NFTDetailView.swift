@@ -207,7 +207,7 @@ struct NFTDetailView: View {
                             .frame(width: 34, height: 17, alignment: .leading)
                         
                         Text("\(nft.price.formattedAsUSDT)")
-                            .font(.custom("Space Grotesk", size: 20))
+                            .font(.custom("SpaceGrotesk-Regular", size: 20))
                             .foregroundStyle(Color(red: 23/255.0, green: 24/255.0, blue: 22/255.0))
                             .frame(width: 100, height: 30, alignment: .leading)
                     }

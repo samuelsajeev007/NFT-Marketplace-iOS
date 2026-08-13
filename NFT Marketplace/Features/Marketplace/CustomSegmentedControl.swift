@@ -26,7 +26,7 @@ struct CustomSegmentedControl: View {
                 } label: {
                     VStack(spacing: 12) {
                         Text(tab.rawValue)
-                            .font(.custom(selectedTab == tab ? "Poppins-Medium" : "Poppins", size: 16))
+                            .font(.custom(selectedTab == tab ? "SofiaProSemiBold" : "SofiaProMedium", size: 16))
                             .foregroundStyle(.black)
 //                            .frame(width: tab == .marketplace ? 94 : 79, height: 18)
                             .lineLimit(1)

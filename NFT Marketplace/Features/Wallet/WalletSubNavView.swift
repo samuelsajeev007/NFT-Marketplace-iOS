@@ -56,8 +56,7 @@ struct WalletSubNavView: View {
                     Text("Create NFT")
                         .font(.custom("Poppins-Medium", size: 14))
                         .foregroundStyle(Color.techbankBlue)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 8)
+                        .frame(width: 132, height: 35)
                         .overlay(
                             Capsule()
                                 .stroke(Color.techbankBlue, lineWidth: 1)
