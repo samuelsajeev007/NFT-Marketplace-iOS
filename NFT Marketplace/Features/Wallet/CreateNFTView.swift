@@ -168,9 +168,12 @@ struct CreateNFTView: View {
                             .frame(height: 50)
                             .background(
                                 LinearGradient(
-                                    colors: [Color.techbankBlue, Color.blue.opacity(0.7)],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
+                                    colors: [
+                                        Color(red: 58/255.0, green: 108/255.0, blue: 244/255.0),
+                                        Color(red: 14/255.0, green: 195/255.0, blue: 244/255.0)
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
                                 )
                             )
                             .clipShape(Capsule())
